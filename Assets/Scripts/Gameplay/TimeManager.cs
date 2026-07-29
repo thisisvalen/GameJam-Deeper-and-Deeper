@@ -4,13 +4,11 @@ public class TimeManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float currentTimeOfGame;
-    [SerializeField] private float timeToIncreasePain = 10f;
     [SerializeField] private GameManager gameManager;
     void Start()
     {
         currentTimeOfGame = 0f;
 
-        InvokeRepeating("IncreasePainScale", timeToIncreasePain, timeToIncreasePain);
     }
 
     // Update is called once per frame
@@ -25,8 +23,4 @@ public class TimeManager : MonoBehaviour
         gameManager.IncreasePainPerSecond(Time.deltaTime);
     }
 
-    private void IncreasePainScale()
-    {
-        gameManager.IncreasePainScale();
-    }
 }

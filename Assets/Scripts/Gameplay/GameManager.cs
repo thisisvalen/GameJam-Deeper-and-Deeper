@@ -4,15 +4,27 @@ public class GameManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private TimeManager timeManager;
+    private CharacterMovement characterMovement;
+    public float playerPositionY;
+
+    [Header("Pain Settings")]
     public float painScale;
-    public float playerPain = 0f;
     public float maxPain = 100f;
+    public float yBandToIncreasePain = 30f;
+
+    [Header("Game Settings")]
     public bool gameOver = false;
+    public float yLimit = -170f;
+
+    [Header("Player Stats")]
     public float gameScore;
+    public float numberOfSyringes;
+    public float playerPain = 0f;
     void Start()
     {
         gameScore = 0f;
         painScale = 0.2f;
+        characterMovement = FindAnyObjectByType<CharacterMovement>();
     }
 
     // Update is called once per frame
@@ -23,7 +35,9 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        
+        playerPositionY = characterMovement.transform.position.y;
+        ChangePainScale();
+
         if (playerPain > maxPain)
         {
             playerPain = maxPain;
@@ -35,9 +49,28 @@ public class GameManager : MonoBehaviour
     {
         playerPain += time * painScale;
     }
-    public void IncreasePainScale()
+    public void ChangePainScale()
     {
-        painScale += 0.5f;
+        painScale = 0.5f + (Mathf.Abs(playerPositionY / yBandToIncreasePain) * 0.5f);
+    }
+
+    public void CollectItem(ItemData itemData)
+    {
+        switch (itemData.itemType)
+        {
+            case ItemType.Syringe:
+                AddSyringe();
+                break;
+            case ItemType.Collectable:
+                IncreaseScore(itemData.itemEffectValue);
+                break;
+            case ItemType.Obstacle:
+                IncreasePain(itemData.itemEffectValue);
+                break;
+            default:
+                Debug.LogWarning("Unknown item type collected: " + itemData.itemType);
+                break;
+        }
     }
 
     public void IncreasePain(float amount)
@@ -49,12 +82,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ReducePain(float amount) 
+    public void ApplySyringe() 
     {         
-        playerPain -= amount;
+        if(numberOfSyringes <= 0)
+        {
+            return;
+        }
+        numberOfSyringes--;
+        float syringeEffect = 20f; // Amount of pain reduced by a syringe
+        playerPain -= syringeEffect;
         if (playerPain < 0f)
         {
             playerPain = 0f;
+        }
+    }
+
+    public void AddSyringe()
+    {
+        if(numberOfSyringes < 3)
+        {
+            numberOfSyringes++;
         }
     }
 
