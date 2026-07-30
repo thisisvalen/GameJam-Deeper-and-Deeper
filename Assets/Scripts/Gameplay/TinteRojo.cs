@@ -9,11 +9,14 @@ public class TinteRojo : MonoBehaviour
     public Color colorDeFlash = Color.red; // O 'new Color(1f, 0f, 0f)'
     public Color colorDeFlashVerde = Color.green; 
     public float duracionFlash = 1f;
+    public Color colorOriginal;
 
     void Start()
     {
         // Obtenemos el componente al iniciar
         miSpriteRenderer = GetComponent<SpriteRenderer>();
+        // 1. Guardamos el color original
+        colorOriginal = miSpriteRenderer.color;
     }
 
     // Llama a esta función cuando el personaje reciba daño o haga una acción
@@ -24,8 +27,6 @@ public class TinteRojo : MonoBehaviour
 
     private IEnumerator EfectoFlash()
     {
-        // 1. Guardamos el color original
-        Color colorOriginal = miSpriteRenderer.color;
 
         // 2. Cambiamos al color de flash
         miSpriteRenderer.color = colorDeFlash;
@@ -43,9 +44,6 @@ public class TinteRojo : MonoBehaviour
 
     private IEnumerator EfectoFlashVerde()
     {
-        // 1. Guardamos el color original
-        Color colorOriginal = miSpriteRenderer.color;
-
         // 2. Cambiamos al color de flash
         miSpriteRenderer.color = colorDeFlashVerde;
 

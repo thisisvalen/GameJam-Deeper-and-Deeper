@@ -32,8 +32,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 6723103496220986856}
-    m_Position: {x: 410, y: 140, z: 0}
+    m_State: {fileID: 7948493180201867043}
+    m_Position: {x: 410, y: 190, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -43,15 +43,15 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 6723103496220986856}
---- !u!1102 &6723103496220986856
+  m_DefaultState: {fileID: 7948493180201867043}
+--- !u!1102 &7948493180201867043
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MouseCelebrating
+  m_Name: MouseCelebratingMenu
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d292970c1acdf41b5bb5147d5f6490db, type: 2}
+  m_Motion: {fileID: 7400000, guid: fa59bf3460746144ea88087e95fc11f2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
