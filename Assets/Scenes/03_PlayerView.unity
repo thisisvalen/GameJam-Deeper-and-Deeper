@@ -276,6 +276,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1776274211}
     m_Modifications:
     - target: {fileID: 4048855242249016823, guid: 215b8b825071dff488d3d59075c130da, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3528754
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048855242249016823, guid: 215b8b825071dff488d3d59075c130da, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -285,7 +289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4048855242249016823, guid: 215b8b825071dff488d3d59075c130da, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7
+      value: -2.81
       objectReference: {fileID: 0}
     - target: {fileID: 4048855242249016823, guid: 215b8b825071dff488d3d59075c130da, type: 3}
       propertyPath: m_LocalRotation.w
@@ -314,6 +318,10 @@ PrefabInstance:
     - target: {fileID: 4048855242249016823, guid: 215b8b825071dff488d3d59075c130da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6230372702679241343, guid: 215b8b825071dff488d3d59075c130da, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6472317583444197176, guid: 215b8b825071dff488d3d59075c130da, type: 3}
       propertyPath: m_Name
@@ -1029,7 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TinteRojo
   colorDeFlash: {r: 1, g: 0, b: 0, a: 1}
-  colorDeFlashVerde: {r: 0, g: 0.9687028, b: 1, a: 1}
+  colorDeFlashVerde: {r: 0.2783019, g: 0.9773585, b: 1, a: 1}
   duracionFlash: 0.5
   colorOriginal: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1776274218
