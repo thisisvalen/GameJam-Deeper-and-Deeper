@@ -43,6 +43,11 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        sfxChannel = gameObject.AddComponent<AudioSource>();
+        musicChannel = gameObject.AddComponent<AudioSource>();
+        playerChannel = gameObject.AddComponent<AudioSource>();
+    
     }
 
     private void OnEnable()
