@@ -20,6 +20,7 @@ public class SceneFlowManager : MonoBehaviour
     /// </summary>
     public void GoToGameplay()
     {
+        AudioManager.Instance.PlayButtonSound();
         Time.timeScale = 1f;
         SceneManager.LoadScene(gameplaySceneName);
     }
@@ -29,6 +30,7 @@ public class SceneFlowManager : MonoBehaviour
     /// </summary>
     public void GoToMainMenu()
     {
+        AudioManager.Instance.PlayButtonSound();
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
     }
@@ -39,6 +41,7 @@ public class SceneFlowManager : MonoBehaviour
     /// <param name="sceneName">Name of the target scene in Build Settings.</param>
     public void LoadSceneByName(string sceneName)
     {
+        AudioManager.Instance.PlayButtonSound();
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
@@ -48,6 +51,7 @@ public class SceneFlowManager : MonoBehaviour
     /// </summary>
     public void RestartCurrentScene()
     {
+        AudioManager.Instance.PlayButtonSound();
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

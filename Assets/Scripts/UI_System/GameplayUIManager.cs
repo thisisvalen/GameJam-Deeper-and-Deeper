@@ -145,7 +145,6 @@ public class GameplayUIManager : MonoBehaviour
     public void TogglePause()
     {
         isPaused = !isPaused;
-
         if (pausePanel != null) 
             pausePanel.SetActive(isPaused);
 
@@ -156,10 +155,17 @@ public class GameplayUIManager : MonoBehaviour
 
     private void UpdatePauseButtons()
     {
-        if (pauseButton != null) pauseButton.SetActive(!isPaused);
-        if (playButton != null) playButton.SetActive(isPaused);
+        if (pauseButton != null)
+        {
+            pauseButton.SetActive(!isPaused);
+            AudioManager.Instance.PauseClips();
+        }
+        if (playButton != null)
+        {
+            playButton.SetActive(isPaused);
+            AudioManager.Instance.UnPauseClips();
+        }
     }
-
     public void ToggleMusic()
     {
         isMusicMuted = !isMusicMuted;
@@ -167,6 +173,14 @@ public class GameplayUIManager : MonoBehaviour
         if (musicAudioSource != null)
         {
             musicAudioSource.mute = isMusicMuted;
+            if (isMusicMuted)
+            {
+                AudioManager.Instance.MuteClips();
+            }
+            else
+            {
+                AudioManager.Instance.UnMuteClips();
+            }
         }
 
         if (musicToggleIcon != null)

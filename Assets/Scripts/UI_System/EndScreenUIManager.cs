@@ -23,12 +23,14 @@ public class EndScreenUIManager : MonoBehaviour
 
     public void OnMainButtonClicked()
     {
+        AudioManager.Instance.PlayButtonSound();
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void OnPlayAgainButtonClicked()
     {
+        AudioManager.Instance.PlayButtonSound();
         Time.timeScale = 1f;
         SceneManager.LoadScene(playAgainSceneName);
     }

@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         gameScore = 0f;
         painScale = 0.2f;
         characterMovement = FindAnyObjectByType<CharacterMovement>();
+        AudioManager.Instance.PlayPlayerMusic();
     }
 
     // Update is called once per frame
@@ -48,10 +49,12 @@ public class GameManager : MonoBehaviour
         {
             playerPain = maxPain;
             gameOver = true;
+            AudioManager.Instance.StopPlayerMusic();
         }
         else if(playerPositionY <= -characterMovement.maxDepth)
         {
             gameFinished = true;
+            AudioManager.Instance.StopPlayerMusic();
         }
         
 
@@ -77,13 +80,16 @@ public class GameManager : MonoBehaviour
             case ItemType.Syringe:
                 AddSyringe();
                 _animator.Play("MouseCelebrating");
+                AudioManager.Instance.PlaySoundEffect(ItemType.Collectable);
                 break;
             case ItemType.Collectable:
                 IncreaseScore(itemData.itemEffectValue);
                 _animator.Play("MouseCelebrating");
+                AudioManager.Instance.PlaySoundEffect(ItemType.Collectable);
                 break;
             case ItemType.Obstacle:
                 IncreasePain(itemData.itemEffectValue);
+                AudioManager.Instance.PlaySoundEffect(ItemType.Obstacle);
                 _tinteRojo.ActivarFlash();
                 break;
             default:
@@ -107,7 +113,8 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-         _tinteRojo.ActivarFlashVerde();
+        AudioManager.Instance.PlaySoundEffect(ItemType.Syringe);
+        _tinteRojo.ActivarFlashVerde();
         numberOfSyringes--;
         float syringeEffect = 20f; // Amount of pain reduced by a syringe
         playerPain -= syringeEffect;
