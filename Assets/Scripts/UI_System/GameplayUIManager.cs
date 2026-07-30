@@ -14,7 +14,7 @@ public class GameplayUIManager : MonoBehaviour
     public Image painFillImage;
 
     [Header("Pain Bar Color Gradient")]
-    public Gradient painGradient; // Evaluates fill amount (0 to 1) to set color dynamically
+    public Gradient painGradient;
 
     [Header("Syringe UI Slots (Array of 3 Syringe Icons)")]
     public GameObject[] syringeIcons;
@@ -35,13 +35,15 @@ public class GameplayUIManager : MonoBehaviour
     [Tooltip("Exact name of the independent Game Over scene in Build Settings.")]
     public string gameOverSceneName = "05_GameOver";
 
+    [Tooltip("Exact name of the independent Winner/Mission Completed scene in Build Settings.")]
+    public string winnerSceneName = "06_WinnerView";
+
     private bool isPaused = false;
     private bool isMusicMuted = false;
-    private bool hasLoadedGameOver = false;
+    private bool hasTriggeredEndGame = false;
 
     private void Start()
     {
-        // Automatically find GameManager in scene if not assigned in Inspector
         if (gameManager == null)
         {
             gameManager = FindFirstObjectByType<GameManager>();
@@ -55,54 +57,49 @@ public class GameplayUIManager : MonoBehaviour
 
     private void Update()
     {
-        // Continuously read values from GameManager and sync with UI
-        if (gameManager != null)
+        if (gameManager != null && !hasTriggeredEndGame)
         {
-            // 1. Update Pain Bar & Gradient
+            // 1. Sync active gameplay UI elements
             UpdatePainBar(gameManager.playerPain, gameManager.maxPain);
-
-            // 2. Update Syringe UI (Converts float numberOfSyringes to int)
             UpdateSyringes(Mathf.RoundToInt(gameManager.numberOfSyringes));
-
-            // 3. Update Score UI (Converts float gameScore to int)
             UpdateScore(Mathf.RoundToInt(gameManager.gameScore));
 
-            // 4. Trigger Scene Transition when Pain is Maxed out (Game Over)
-            if (gameManager.gameOver && !hasLoadedGameOver)
+            // 2. Check for Game Over condition
+            if (gameManager.gameOver)
             {
-                hasLoadedGameOver = true;
-                LoadGameOverScene();
+                hasTriggeredEndGame = true;
+                SaveScoreAndLoadScene(gameOverSceneName);
+            }
+            // 3. Check for Mission Completed condition
+            else if (gameManager.gameFinished)
+            {
+                hasTriggeredEndGame = true;
+                SaveScoreAndLoadScene(winnerSceneName);
             }
         }
     }
 
-    // ==========================================
-    // 1. GAME OVER SCENE CONTROL
-    // ==========================================
-
-    private void LoadGameOverScene()
+    private void SaveScoreAndLoadScene(string targetScene)
     {
-        // Reset time scale to normal before changing scenes so the new scene isn't paused
         Time.timeScale = 1f;
 
-        if (!string.IsNullOrEmpty(gameOverSceneName))
+        // Save current score globally so end screens can display it
+        ScoreManager.FinalScore = Mathf.RoundToInt(gameManager.gameScore);
+
+        if (!string.IsNullOrEmpty(targetScene))
         {
-            SceneManager.LoadScene(gameOverSceneName);
+            SceneManager.LoadScene(targetScene);
         }
         else
         {
-            Debug.LogError("Game Over scene name is empty in GameplayUIManager!");
+            Debug.LogError($"Target scene name is empty in GameplayUIManager!");
         }
     }
 
     // ==========================================
-    // 2. PAIN BAR CONTROL (GRADIENT)
+    // UI UPDATES & TOGGLES
     // ==========================================
 
-    /// <summary>
-    /// Single parameter method exposed to Unity Slider's 'On Value Changed (Dynamic float)'.
-    /// Receives a normalized value between 0.0 and 1.0.
-    /// </summary>
     public void UpdatePainBar(float fillAmount)
     {
         fillAmount = Mathf.Clamp01(fillAmount);
@@ -118,19 +115,11 @@ public class GameplayUIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Overload method for external gameplay logic passing current and maximum values.
-    /// Example usage: uiManager.UpdatePainBar(currentPain, maxPain);
-    /// </summary>
     public void UpdatePainBar(float currentPain, float maxPain)
     {
         if (maxPain <= 0f) return;
         UpdatePainBar(currentPain / maxPain);
     }
-
-    // ==========================================
-    // 3. SYRINGE VISIBILITY CONTROL
-    // ==========================================
 
     public void UpdateSyringes(int remainingCount)
     {
@@ -140,15 +129,10 @@ public class GameplayUIManager : MonoBehaviour
         {
             if (syringeIcons[i] != null)
             {
-                // Shows syringe if its index is less than remainingCount
                 syringeIcons[i].SetActive(i < remainingCount);
             }
         }
     }
-
-    // ==========================================
-    // 4. SCORE TEXT CONTROL
-    // ==========================================
 
     public void UpdateScore(int currentScore)
     {
@@ -157,10 +141,6 @@ public class GameplayUIManager : MonoBehaviour
             scoreText.text = currentScore.ToString();
         }
     }
-
-    // ==========================================
-    // 5. PAUSE & PLAY TOGGLE CONTROL
-    // ==========================================
 
     public void TogglePause()
     {
@@ -179,10 +159,6 @@ public class GameplayUIManager : MonoBehaviour
         if (pauseButton != null) pauseButton.SetActive(!isPaused);
         if (playButton != null) playButton.SetActive(isPaused);
     }
-
-    // ==========================================
-    // 6. MUSIC TOGGLE CONTROL
-    // ==========================================
 
     public void ToggleMusic()
     {
