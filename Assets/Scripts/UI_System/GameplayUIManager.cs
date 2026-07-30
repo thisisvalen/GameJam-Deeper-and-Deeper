@@ -53,6 +53,11 @@ public class GameplayUIManager : MonoBehaviour
             pausePanel.SetActive(false);
 
         UpdatePauseButtons();
+        isMusicMuted = AudioManager.Instance.isMuted;
+        if (musicToggleIcon != null)
+        {
+            musicToggleIcon.color = isMusicMuted ? new Color(1f, 1f, 1f, 0.4f) : Color.white;
+        }
     }
 
     private void Update()

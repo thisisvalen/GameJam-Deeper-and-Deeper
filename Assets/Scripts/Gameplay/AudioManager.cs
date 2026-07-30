@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
         sfxChannel = gameObject.AddComponent<AudioSource>();
         musicChannel = gameObject.AddComponent<AudioSource>();
         playerChannel = gameObject.AddComponent<AudioSource>();
-    
+        isMuted = false;
     }
 
     private void OnEnable()

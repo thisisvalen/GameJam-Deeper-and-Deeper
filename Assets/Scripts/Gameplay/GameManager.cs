@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
         gameScore = 0f;
         painScale = 0.2f;
         characterMovement = FindAnyObjectByType<CharacterMovement>();
-        AudioManager.Instance.UnMuteClips();
         AudioManager.Instance.PlayPlayerMusic();
     }
 

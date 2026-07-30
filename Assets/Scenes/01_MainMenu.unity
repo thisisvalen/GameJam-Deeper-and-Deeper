@@ -476,7 +476,7 @@ MonoBehaviour:
   obstacleClip: {fileID: 0}
   collectableClip: {fileID: 8300000, guid: 38d00c809eb6bc24fb93383f70412fd6, type: 3}
   playerMusic: {fileID: 8300000, guid: 2a6203a7541ad0e4eb6e66cd46f7e7b0, type: 3}
-  menuMusic: {fileID: 0}
+  menuMusic: {fileID: 8300000, guid: ee4d1101b67201d4f8fd99be0639d3f9, type: 3}
   gameplayMusic: {fileID: 8300000, guid: 036e621cfc04ca446a05329b255eb4d2, type: 3}
   sfxChannel: {fileID: 0}
   musicChannel: {fileID: 0}
