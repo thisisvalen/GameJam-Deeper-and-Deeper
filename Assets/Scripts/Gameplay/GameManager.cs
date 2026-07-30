@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     [Header ("Animation Control")]
     [SerializeField] private Animator _animator;
+    public TinteRojo _tinteRojo;
 
     void Start()
     {
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviour
                 break;
             case ItemType.Obstacle:
                 IncreasePain(itemData.itemEffectValue);
+                _tinteRojo.ActivarFlash();
                 break;
             default:
                 Debug.LogWarning("Unknown item type collected: " + itemData.itemType);

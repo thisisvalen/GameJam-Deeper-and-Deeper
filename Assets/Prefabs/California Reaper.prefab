@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3439385264677191445}
   - component: {fileID: 350395141169681282}
   - component: {fileID: 3929904587499614709}
+  - component: {fileID: 4919892798026403003}
   m_Layer: 0
   m_Name: California Reaper
   m_TagString: Untagged
@@ -153,3 +154,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 11.015241, y: 7.7166433}
   m_EdgeRadius: 0
+--- !u!114 &4919892798026403003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095706119763958191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea773d0a8115141d8b2d76ad2a95a124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Latidos
+  escalaMinima: 0.13
+  escalaMaxima: 0.2
+  velocidad: 2
