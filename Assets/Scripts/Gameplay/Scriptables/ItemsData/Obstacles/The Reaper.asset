@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: The Reaper
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemType: 2
-  itemEffectValue: 50
+  itemEffectValue: 30

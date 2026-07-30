@@ -620,58 +620,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleSpawner
   player: {fileID: 1776274207}
   collectibleTypes:
-  - typeName: Blue Nerve Core
-    prefab: {fileID: 5251257471747577648, guid: 79ea5a68704194884a90fd3417a5a703, type: 3}
-    minDepth: 0
-    maxDepth: 90
-    fixedCount: 0
-    poolSize: 10
-  - typeName: Blue Nerve tree
-    prefab: {fileID: 8821320129039122557, guid: 81530a8edb53243c2b0708608ab7aad4, type: 3}
-    minDepth: 0
-    maxDepth: 90
-    fixedCount: 0
-    poolSize: 10
   - typeName: California Reaper
     prefab: {fileID: 9095706119763958191, guid: 6f55ea3e25aa54e37b83bdec0a18c286, type: 3}
     minDepth: 0
-    maxDepth: 90
+    maxDepth: 200
     fixedCount: 0
     poolSize: 10
   - typeName: Chicken Dipper
     prefab: {fileID: 1224468992333868360, guid: ae004099fe72a4ef9bcb4cdd17902c0c, type: 3}
     minDepth: 0
-    maxDepth: 90
-    fixedCount: 0
-    poolSize: 10
-  - typeName: Red Nerve Core
-    prefab: {fileID: 3745183606280044256, guid: a2e515bcbbd9c4741bb630ac30a4c616, type: 3}
-    minDepth: 0
-    maxDepth: 90
-    fixedCount: 0
-    poolSize: 10
-  - typeName: Red Nerve Tree
-    prefab: {fileID: 8253076303259825262, guid: 7bbc70c067e954e3391e1bdfba3807e8, type: 3}
-    minDepth: 0
-    maxDepth: 90
+    maxDepth: 200
     fixedCount: 0
     poolSize: 10
   - typeName: Sleeper Pills
     prefab: {fileID: 5274356159326506545, guid: d6c21160e6e3448afade3e1a64d16339, type: 3}
-    minDepth: 0
-    maxDepth: 90
-    fixedCount: 2
-    poolSize: 2
+    minDepth: 20
+    maxDepth: 200
+    fixedCount: 0
+    poolSize: 10
+  - typeName: Sleeper Shark Cookie
+    prefab: {fileID: 8500232275240856890, guid: b3f31ac282e15442e8d2b72422343593, type: 3}
+    minDepth: 40
+    maxDepth: 200
+    fixedCount: 0
+    poolSize: 10
   - typeName: Syringe
     prefab: {fileID: 8814125577485672618, guid: 7d71195bc26154f0eb8a04fb43549aa7, type: 3}
-    minDepth: 0
-    maxDepth: 90
-    fixedCount: 2
-    poolSize: 2
+    minDepth: 50
+    maxDepth: 200
+    fixedCount: 0
+    poolSize: 1
+  - typeName: Blue Nerve Core
+    prefab: {fileID: 5251257471747577648, guid: 79ea5a68704194884a90fd3417a5a703, type: 3}
+    minDepth: 50
+    maxDepth: 200
+    fixedCount: 0
+    poolSize: 10
+  - typeName: Red Nerve Core
+    prefab: {fileID: 3745183606280044256, guid: a2e515bcbbd9c4741bb630ac30a4c616, type: 3}
+    minDepth: 50
+    maxDepth: 200
+    fixedCount: 0
+    poolSize: 10
+  - typeName: Blue Nerve tree
+    prefab: {fileID: 8821320129039122557, guid: 81530a8edb53243c2b0708608ab7aad4, type: 3}
+    minDepth: 90
+    maxDepth: 200
+    fixedCount: 0
+    poolSize: 10
+  - typeName: Red Nerve Tree
+    prefab: {fileID: 8253076303259825262, guid: 7bbc70c067e954e3391e1bdfba3807e8, type: 3}
+    minDepth: 90
+    maxDepth: 200
+    fixedCount: 0
+    poolSize: 10
   - typeName: The Reaper
     prefab: {fileID: 8481522511241806925, guid: f3563b42dce5c46a5be8277ef412e4df, type: 3}
-    minDepth: 0
-    maxDepth: 90
+    minDepth: 120
+    maxDepth: 200
     fixedCount: 1
     poolSize: 1
   depthBetweenObjects: 3.5

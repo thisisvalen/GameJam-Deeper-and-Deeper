@@ -29,7 +29,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Depth limit")]
     // Fondo del nivel medido desde la altura de partida, y única fuente de la profundidad total:
     // el reparto de coleccionables y el gradiente del fondo lo leen de aquí en lugar de repetirlo.
-    [SerializeField] private float maxDepth = 200f;
+    public float maxDepth = 200f;
 
     [Header("State")]
     // Interruptor externo para pausa, fin de nivel o cinemáticas
