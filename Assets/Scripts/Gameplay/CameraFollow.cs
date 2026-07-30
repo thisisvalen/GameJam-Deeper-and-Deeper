@@ -9,10 +9,17 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform target;
     // Distancia a la que la cámara queda por debajo del jugador, para mostrar más del fondo
     [SerializeField] private float verticalOffset = 1f;
+    // Altura extra desde la que cae la cámara al empezar el nivel
+    [SerializeField] private float introHeight = 40f;
+    // Duración en segundos de esa caída inicial
+    [SerializeField] private float introDuration = 2f;
 
     // Posición original en X y Z: el lateral se fija en el editor y la Z debe conservarse en 2D
     private float fixedX;
     private float fixedZ;
+
+    // Tiempo transcurrido de la animación de entrada
+    private float introTimer;
 
     private void Awake()
     {
@@ -38,6 +45,18 @@ public class CameraFollow : MonoBehaviour
             return;
         }
 
-        transform.position = new Vector3(fixedX, target.position.y - verticalOffset, fixedZ);
+        // Altura de seguimiento normal, la que se usa una vez terminada la entrada
+        float followY = target.position.y - verticalOffset;
+
+        // Durante los primeros segundos la cámara desciende desde arriba hasta esa altura
+        if (introTimer < introDuration)
+        {
+            introTimer += Time.deltaTime;
+            // SmoothStep suaviza el arranque y la llegada para que no se sienta un salto seco
+            float progress = Mathf.SmoothStep(0f, 1f, introTimer / introDuration);
+            followY = Mathf.Lerp(followY + introHeight, followY, progress);
+        }
+
+        transform.position = new Vector3(fixedX, followY, fixedZ);
     }
 }
