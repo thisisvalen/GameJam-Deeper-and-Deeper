@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             playerPain = maxPain;
             gameOver = true;
         }
-        else if(playerPositionY <= characterMovement.maxDepth)
+        else if(playerPositionY <= -characterMovement.maxDepth)
         {
             gameFinished = true;
         }
