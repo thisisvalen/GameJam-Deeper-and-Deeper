@@ -315,6 +315,7 @@ MonoBehaviour:
   gameScore: 0
   numberOfSyringes: 0
   playerPain: 0
+  _animator: {fileID: 1776274215}
 --- !u!4 &152468077
 Transform:
   m_ObjectHideFlags: 0
@@ -622,9 +623,10 @@ GameObject:
   - component: {fileID: 1776274211}
   - component: {fileID: 1776274210}
   - component: {fileID: 1776274208}
-  - component: {fileID: 1776274212}
   - component: {fileID: 1776274207}
   - component: {fileID: 1776274213}
+  - component: {fileID: 1776274215}
+  - component: {fileID: 1776274216}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -728,7 +730,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -925978739, guid: f892e74d7980c59418d521e5f036ca8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd3f0fd27d7c149d48d4c8a1e6ad6404, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -748,13 +750,49 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1776274212
-CircleCollider2D:
+--- !u!114 &1776274213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776274206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a04ff0a4c16fef04da1f089e8896fcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TunnelDigging
+  holeMaskPrefab: {fileID: 1288297532520362601, guid: 4a99bfe8b51e6ce4f85f441e145d5526, type: 3}
+  distanceBetweenHoles: 0.2
+--- !u!95 &1776274215
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776274206}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1edf5c803b1eb4ef9a01515f5e86ae81, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &1776274216
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -787,22 +825,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 2.605
---- !u!114 &1776274213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776274206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a04ff0a4c16fef04da1f089e8896fcd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TunnelDigging
-  holeMaskPrefab: {fileID: 1288297532520362601, guid: 4a99bfe8b51e6ce4f85f441e145d5526, type: 3}
-  distanceBetweenHoles: 0.2
+  m_Offset: {x: -0.03281951, y: -1.184892}
+  m_Size: {x: 8.733109, y: 16.169641}
+  m_Direction: 0
 --- !u!1 &1783580968
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +984,7 @@ GameObject:
   - component: {fileID: 1922551108}
   - component: {fileID: 1922551111}
   m_Layer: 0
-  m_Name: Chicken
+  m_Name: California Reaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -977,7 +1002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209f3cc41303db04f8d81d15af347868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemBehaviour
-  itemData: {fileID: 11400000, guid: 8d3d0109dc8e6bb4d917f70382115865, type: 2}
+  itemData: {fileID: 11400000, guid: d0a64630c83364041adb687e983abc3d, type: 2}
   gameManager: {fileID: 0}
 --- !u!212 &1922551109
 SpriteRenderer:
@@ -1028,7 +1053,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94e82d36b9d6d487bb53ce74d3d8e750, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1047,9 +1072,9 @@ Transform:
   m_GameObject: {fileID: 1922551107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.05, y: -3.74, z: 0}
+  m_LocalScale: {x: 0.17129, y: 0.17129, z: 0.17129}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1087,17 +1112,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1.2361875, y: 0.9087405}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 20.48, y: 20.48}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 11.015241, y: 7.7166433}
   m_EdgeRadius: 0
 --- !u!1 &1956545668
 GameObject:
