@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     public float gameScore;
     public float numberOfSyringes;
     public float playerPain = 0f;
+
+    [Header ("Animation Control")]
+    [SerializeField] private Animator _animator;
+
     void Start()
     {
         gameScore = 0f;
@@ -60,9 +64,11 @@ public class GameManager : MonoBehaviour
         {
             case ItemType.Syringe:
                 AddSyringe();
+                _animator.Play("MouseCelebrating");
                 break;
             case ItemType.Collectable:
                 IncreaseScore(itemData.itemEffectValue);
+                _animator.Play("MouseCelebrating");
                 break;
             case ItemType.Obstacle:
                 IncreasePain(itemData.itemEffectValue);
