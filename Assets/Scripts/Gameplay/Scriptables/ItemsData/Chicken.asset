@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Chicken
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemType: 1
-  itemEffectValue: 20
+  itemEffectValue: 7.45
