@@ -13,6 +13,9 @@ EditorBuildSettings:
     guid: 098ab082b8ff79d46a1c86ce24fa6274
   - enabled: 1
     path: Assets/Scenes/03_PlayerView.unity
+    guid: 9c7b2817476c745428d209144653284e
+  - enabled: 0
+    path: Assets/Scenes/03_PlayerView.unity
     guid: 7278cf017910c7c47b3f6b3a39b90b89
   - enabled: 1
     path: Assets/Scenes/04_Tutorial.unity

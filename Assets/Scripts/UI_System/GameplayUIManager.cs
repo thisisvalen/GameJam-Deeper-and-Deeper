@@ -1,9 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameplayUIManager : MonoBehaviour
 {
+    [Header("GameManager Connection")]
+    [Tooltip("Optional: Drag GameManager here. If empty, it will be found automatically at Start.")]
+    public GameManager gameManager;
+
     [Header("Pain Bar Settings")]
     public Slider painSlider;
     public Image painFillImage;
@@ -26,19 +31,72 @@ public class GameplayUIManager : MonoBehaviour
     public AudioSource musicAudioSource;
     public Image musicToggleIcon;
 
+    [Header("Scene Transition Settings")]
+    [Tooltip("Exact name of the independent Game Over scene in Build Settings.")]
+    public string gameOverSceneName = "05_GameOver";
+
     private bool isPaused = false;
     private bool isMusicMuted = false;
+    private bool hasLoadedGameOver = false;
 
     private void Start()
     {
+        // Automatically find GameManager in scene if not assigned in Inspector
+        if (gameManager == null)
+        {
+            gameManager = FindFirstObjectByType<GameManager>();
+        }
+
         if (pausePanel != null) 
             pausePanel.SetActive(false);
 
         UpdatePauseButtons();
     }
 
+    private void Update()
+    {
+        // Continuously read values from GameManager and sync with UI
+        if (gameManager != null)
+        {
+            // 1. Update Pain Bar & Gradient
+            UpdatePainBar(gameManager.playerPain, gameManager.maxPain);
+
+            // 2. Update Syringe UI (Converts float numberOfSyringes to int)
+            UpdateSyringes(Mathf.RoundToInt(gameManager.numberOfSyringes));
+
+            // 3. Update Score UI (Converts float gameScore to int)
+            UpdateScore(Mathf.RoundToInt(gameManager.gameScore));
+
+            // 4. Trigger Scene Transition when Pain is Maxed out (Game Over)
+            if (gameManager.gameOver && !hasLoadedGameOver)
+            {
+                hasLoadedGameOver = true;
+                LoadGameOverScene();
+            }
+        }
+    }
+
     // ==========================================
-    // 1. PAIN BAR CONTROL (GRADIENT)
+    // 1. GAME OVER SCENE CONTROL
+    // ==========================================
+
+    private void LoadGameOverScene()
+    {
+        // Reset time scale to normal before changing scenes so the new scene isn't paused
+        Time.timeScale = 1f;
+
+        if (!string.IsNullOrEmpty(gameOverSceneName))
+        {
+            SceneManager.LoadScene(gameOverSceneName);
+        }
+        else
+        {
+            Debug.LogError("Game Over scene name is empty in GameplayUIManager!");
+        }
+    }
+
+    // ==========================================
+    // 2. PAIN BAR CONTROL (GRADIENT)
     // ==========================================
 
     /// <summary>
@@ -49,7 +107,7 @@ public class GameplayUIManager : MonoBehaviour
     {
         fillAmount = Mathf.Clamp01(fillAmount);
 
-        if (painSlider != null && painSlider.value != fillAmount)
+        if (painSlider != null && !Mathf.Approximately(painSlider.value, fillAmount))
         {
             painSlider.value = fillAmount;
         }
@@ -71,22 +129,25 @@ public class GameplayUIManager : MonoBehaviour
     }
 
     // ==========================================
-    // 2. SYRINGE VISIBILITY CONTROL
+    // 3. SYRINGE VISIBILITY CONTROL
     // ==========================================
 
     public void UpdateSyringes(int remainingCount)
     {
+        if (syringeIcons == null) return;
+
         for (int i = 0; i < syringeIcons.Length; i++)
         {
             if (syringeIcons[i] != null)
             {
+                // Shows syringe if its index is less than remainingCount
                 syringeIcons[i].SetActive(i < remainingCount);
             }
         }
     }
 
     // ==========================================
-    // 3. SCORE TEXT CONTROL
+    // 4. SCORE TEXT CONTROL
     // ==========================================
 
     public void UpdateScore(int currentScore)
@@ -98,7 +159,7 @@ public class GameplayUIManager : MonoBehaviour
     }
 
     // ==========================================
-    // 4. PAUSE & PLAY TOGGLE CONTROL
+    // 5. PAUSE & PLAY TOGGLE CONTROL
     // ==========================================
 
     public void TogglePause()
@@ -120,7 +181,7 @@ public class GameplayUIManager : MonoBehaviour
     }
 
     // ==========================================
-    // 5. MUSIC TOGGLE CONTROL
+    // 6. MUSIC TOGGLE CONTROL
     // ==========================================
 
     public void ToggleMusic()
