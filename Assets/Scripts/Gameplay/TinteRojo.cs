@@ -7,7 +7,8 @@ public class TinteRojo : MonoBehaviour
 
     [Header("Configuración del Flash")]
     public Color colorDeFlash = Color.red; // O 'new Color(1f, 0f, 0f)'
-    public float duracionFlash = 0.2f;
+    public Color colorDeFlashVerde = Color.green; 
+    public float duracionFlash = 1f;
 
     void Start()
     {
@@ -35,4 +36,24 @@ public class TinteRojo : MonoBehaviour
         // 4. Regresamos al color original
         miSpriteRenderer.color = colorOriginal;
     }
+  public void ActivarFlashVerde()
+    {
+        StartCoroutine(EfectoFlashVerde());
+    }
+
+    private IEnumerator EfectoFlashVerde()
+    {
+        // 1. Guardamos el color original
+        Color colorOriginal = miSpriteRenderer.color;
+
+        // 2. Cambiamos al color de flash
+        miSpriteRenderer.color = colorDeFlashVerde;
+
+        // 3. Esperamos el tiempo indicado
+        yield return new WaitForSeconds(duracionFlash);
+
+        // 4. Regresamos al color original
+        miSpriteRenderer.color = colorOriginal;
+    }
+
 }

@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+         _tinteRojo.ActivarFlashVerde();
         numberOfSyringes--;
         float syringeEffect = 20f; // Amount of pain reduced by a syringe
         playerPain -= syringeEffect;
