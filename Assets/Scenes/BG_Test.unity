@@ -234,6 +234,7 @@ MonoBehaviour:
   gameScore: 0
   numberOfSyringes: 0
   playerPain: 0
+  _animator: {fileID: 0}
 --- !u!4 &1642127428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4048855242249016823, guid: 215b8b825071dff488d3d59075c130da, type: 3}
