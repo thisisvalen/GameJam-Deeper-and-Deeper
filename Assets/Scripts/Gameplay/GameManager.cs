@@ -64,10 +64,11 @@ public class GameManager : MonoBehaviour
         {
             case ItemType.Syringe:
                 AddSyringe();
+                _animator.Play("MouseCelebrating");
                 break;
             case ItemType.Collectable:
                 IncreaseScore(itemData.itemEffectValue);
-                _animator.SetBool("didHeCollectAnItem", true);
+                _animator.Play("MouseCelebrating");
                 break;
             case ItemType.Obstacle:
                 IncreasePain(itemData.itemEffectValue);

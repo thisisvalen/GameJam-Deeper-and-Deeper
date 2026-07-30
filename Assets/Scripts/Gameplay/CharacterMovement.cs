@@ -26,6 +26,11 @@ public class CharacterMovement : MonoBehaviour
     // Borde derecho del túnel en coordenadas de mundo
     [SerializeField] private float rightLimit = 2.5f;
 
+    [Header("Depth limit")]
+    // Fondo del nivel medido desde la altura de partida, y única fuente de la profundidad total:
+    // el reparto de coleccionables y el gradiente del fondo lo leen de aquí en lugar de repetirlo.
+    [SerializeField] private float maxDepth = 200f;
+
     [Header("State")]
     // Interruptor externo para pausa, fin de nivel o cinemáticas
     [SerializeField] private bool canMove = true;
@@ -59,6 +64,14 @@ public class CharacterMovement : MonoBehaviour
     public bool IsDigging => currentSpeed > 0.01f;
     // Rapidez normalizada entre 0 y 1, para intensidad de partículas y tono del taladro
     public float SpeedRatio => maxDigSpeed > 0f ? currentSpeed / maxDigSpeed : 0f;
+    // Borde izquierdo del túnel; el reparto de objetos deriva su banda de aquí
+    public float LeftLimit => leftLimit;
+    // Borde derecho del túnel; el reparto de objetos deriva su banda de aquí
+    public float RightLimit => rightLimit;
+    // Profundidad del fondo del nivel, más allá de la cual no se avanza
+    public float MaxDepth => maxDepth;
+    // Indica si ya se está apoyado en el fondo del nivel
+    public bool IsAtBottom => CurrentDepth >= maxDepth - 0.001f;
 
     // Permite a otros sistemas bloquear o devolver el control al jugador
     public bool CanMove
@@ -135,6 +148,9 @@ public class CharacterMovement : MonoBehaviour
 
         // Al topar con un borde el jugador se desliza sobre él en lugar de trabarse, conservando el avance vertical
         nextPosition.x = Mathf.Clamp(nextPosition.x, leftLimit, rightLimit);
+
+        // El nivel es finito: por debajo del fondo no se avanza, pero sí se sigue pudiendo girar y deslizar
+        nextPosition.y = Mathf.Max(nextPosition.y, startYPosition - maxDepth);
 
         // Red de seguridad ante cualquier empuje ascendente futuro: la altura nunca puede aumentar
         nextPosition.y = Mathf.Min(nextPosition.y, currentPosition.y);

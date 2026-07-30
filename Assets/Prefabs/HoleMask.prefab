@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7353484911176518872}
   - component: {fileID: 7005251569141342554}
-  - component: {fileID: 1054120117605476217}
+  - component: {fileID: -3197215861460367866}
   m_Layer: 0
   m_Name: HoleMask
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13.127, y: 13.127, z: 13.127}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,7 +81,7 @@ SpriteMask:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 887182023, guid: c4cb3777c7c08364f99ac239211be865, type: 3}
   m_MaskAlphaCutoff: 0.644
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -92,7 +92,7 @@ SpriteMask:
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
   m_MaskSource: 0
---- !u!114 &1054120117605476217
+--- !u!114 &-3197215861460367866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,6 +101,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1288297532520362601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0ca56fed653ebe40b3dd5a7ecbb1c16, type: 3}
+  m_Script: {fileID: 11500000, guid: 883119c60c6185e4a9bd74a877192ec0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AutoDestroyHole
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteRandomRotation
+  minRotation: 0
+  maxRotation: 360
