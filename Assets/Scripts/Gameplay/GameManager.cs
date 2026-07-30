@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Settings")]
     public bool gameOver = false;
+    public bool gameFinished = false;
     public float yLimit = -170f;
 
     [Header("Player Stats")]
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameOver)
+        if(gameOver || gameFinished)
         {
             return;
         }
@@ -47,6 +48,16 @@ public class GameManager : MonoBehaviour
         {
             playerPain = maxPain;
             gameOver = true;
+        }
+        else if(playerPositionY <= characterMovement.maxDepth)
+        {
+            gameFinished = true;
+        }
+        
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            ApplySyringe();
         }
     }
 

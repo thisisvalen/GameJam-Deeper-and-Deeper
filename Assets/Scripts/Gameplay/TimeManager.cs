@@ -14,7 +14,7 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameManager.gameOver)
+        if(gameManager.gameOver || gameManager.gameFinished)
         {
             CancelInvoke("IncreasePainScale");
             return;
