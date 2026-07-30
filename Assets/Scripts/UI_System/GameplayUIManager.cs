@@ -2,15 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
-/// Controls gameplay HUD elements (Pain bar gradient, syringe array, score text, pause state with toggleable play/pause buttons, and music toggle).
-/// </summary>
 public class GameplayUIManager : MonoBehaviour
 {
     [Header("Pain Bar Settings")]
     public Slider painSlider;
     public Image painFillImage;
-    public Gradient painGradient;
+
+    [Header("Pain Bar Color Gradient")]
+    public Gradient painGradient; // Evaluates fill amount (0 to 1) to set color dynamically
 
     [Header("Syringe UI Slots (Array of 3 Syringe Icons)")]
     public GameObject[] syringeIcons;
@@ -20,8 +19,8 @@ public class GameplayUIManager : MonoBehaviour
 
     [Header("Overlay Panels & Toggle Buttons")]
     public GameObject pausePanel;
-    public GameObject pauseButton; // Button GameObject for Pause (❚❚)
-    public GameObject playButton;  // Button GameObject for Play (▶)
+    public GameObject pauseButton;
+    public GameObject playButton;
 
     [Header("Audio Toggles")]
     public AudioSource musicAudioSource;
@@ -35,25 +34,40 @@ public class GameplayUIManager : MonoBehaviour
         if (pausePanel != null) 
             pausePanel.SetActive(false);
 
-        // Ensure game starts in Play state (Pause button visible, Play button hidden)
         UpdatePauseButtons();
     }
 
     // ==========================================
-    // 1. PAIN BAR CONTROL
+    // 1. PAIN BAR CONTROL (GRADIENT)
     // ==========================================
 
-    public void UpdatePainBar(float currentPain, float maxPain)
+    /// <summary>
+    /// Single parameter method exposed to Unity Slider's 'On Value Changed (Dynamic float)'.
+    /// Receives a normalized value between 0.0 and 1.0.
+    /// </summary>
+    public void UpdatePainBar(float fillAmount)
     {
-        float fillAmount = Mathf.Clamp01(currentPain / maxPain);
+        fillAmount = Mathf.Clamp01(fillAmount);
 
-        if (painSlider != null)
+        if (painSlider != null && painSlider.value != fillAmount)
+        {
             painSlider.value = fillAmount;
+        }
 
         if (painFillImage != null && painGradient != null)
         {
             painFillImage.color = painGradient.Evaluate(fillAmount);
         }
+    }
+
+    /// <summary>
+    /// Overload method for external gameplay logic passing current and maximum values.
+    /// Example usage: uiManager.UpdatePainBar(currentPain, maxPain);
+    /// </summary>
+    public void UpdatePainBar(float currentPain, float maxPain)
+    {
+        if (maxPain <= 0f) return;
+        UpdatePainBar(currentPain / maxPain);
     }
 
     // ==========================================
@@ -87,9 +101,6 @@ public class GameplayUIManager : MonoBehaviour
     // 4. PAUSE & PLAY TOGGLE CONTROL
     // ==========================================
 
-    /// <summary>
-    /// Toggles between Pause and Play states, switching button visibility.
-    /// </summary>
     public void TogglePause()
     {
         isPaused = !isPaused;
@@ -104,8 +115,6 @@ public class GameplayUIManager : MonoBehaviour
 
     private void UpdatePauseButtons()
     {
-        // When paused: Show PLAY button, hide PAUSE button
-        // When playing: Show PAUSE button, hide PLAY button
         if (pauseButton != null) pauseButton.SetActive(!isPaused);
         if (playButton != null) playButton.SetActive(isPaused);
     }

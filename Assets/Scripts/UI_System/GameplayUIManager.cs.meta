@@ -1,2 +1,22 @@
 fileFormatVersion: 2
 guid: 4e60ba57d41c16d478eaae67360a4dec
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - painSlider: {instanceID: 0}
+  - painFillImage: {instanceID: 0}
+  - greenBarSprite: {fileID: 21300000, guid: a364c0d7bd11c5b4598a2bc2544dd94f, type: 3}
+  - yellowBarSprite: {fileID: 21300000, guid: 6da8f99044090c1478552f3b8b03a54e, type: 3}
+  - redBarSprite: {fileID: 21300000, guid: 1fccb0a9116a4444092c2ce7996cee50, type: 3}
+  - scoreText: {instanceID: 0}
+  - pausePanel: {instanceID: 0}
+  - pauseButton: {instanceID: 0}
+  - playButton: {instanceID: 0}
+  - musicAudioSource: {instanceID: 0}
+  - musicToggleIcon: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
