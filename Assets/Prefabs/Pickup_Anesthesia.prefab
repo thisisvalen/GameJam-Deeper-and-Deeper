@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5531978424669711302}
   - component: {fileID: 5531978424669711303}
   - component: {fileID: 5531978424669711304}
+  - component: {fileID: -157955408578136276}
   m_Layer: 9
   m_Name: Pickup_Anesthesia
   m_TagString: Untagged
@@ -128,3 +129,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &-157955408578136276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5531978424669711301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209f3cc41303db04f8d81d15af347868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemBehaviour
+  itemData: {fileID: 0}
+  gameManager: {fileID: 0}

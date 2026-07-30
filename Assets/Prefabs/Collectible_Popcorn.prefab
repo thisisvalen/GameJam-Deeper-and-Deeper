@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8842301157392044602}
   - component: {fileID: 8842301157392044603}
   - component: {fileID: 8842301157392044604}
+  - component: {fileID: 8030545798596603258}
   m_Layer: 9
   m_Name: Collectible_Popcorn
   m_TagString: Untagged
@@ -128,3 +129,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &8030545798596603258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842301157392044601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209f3cc41303db04f8d81d15af347868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemBehaviour
+  itemData: {fileID: 0}
+  gameManager: {fileID: 0}

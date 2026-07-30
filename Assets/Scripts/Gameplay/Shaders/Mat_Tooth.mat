@@ -41,6 +41,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _BoneTexture:
+        m_Texture: {fileID: 2800000, guid: 4f0e34131396a38448109aec833d1700, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -51,6 +55,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_9f5ec9e897bc4356bd30190dc66f701b_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4f0e34131396a38448109aec833d1700, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_c600f01d5f464917853af502dda5080a_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4f0e34131396a38448109aec833d1700, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_dcc4d70aa1034137bb9669a3a84d4779_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 4f0e34131396a38448109aec833d1700, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -75,6 +91,7 @@ Material:
     - _Start_Depth_Y: 0
     - _ZWrite: 0
     m_Colors:
+    - White: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
