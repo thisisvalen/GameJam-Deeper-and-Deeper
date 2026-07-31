@@ -472,8 +472,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   buttonClip: {fileID: 8300000, guid: 83e645484f12091448814445c13cd588, type: 3}
-  syringeClip: {fileID: 0}
-  obstacleClip: {fileID: 0}
+  syringeClip: {fileID: 8300000, guid: eb37fed1ff39abc45a63081255cd7ec7, type: 3}
+  obstacleClip: {fileID: 8300000, guid: 19ba76523f97cb34db1f3e7fe971b844, type: 3}
   collectableClip: {fileID: 8300000, guid: 38d00c809eb6bc24fb93383f70412fd6, type: 3}
   playerMusic: {fileID: 8300000, guid: 2a6203a7541ad0e4eb6e66cd46f7e7b0, type: 3}
   menuMusic: {fileID: 8300000, guid: ee4d1101b67201d4f8fd99be0639d3f9, type: 3}
