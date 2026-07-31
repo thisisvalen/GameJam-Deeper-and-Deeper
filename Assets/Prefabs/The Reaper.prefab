@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209f3cc41303db04f8d81d15af347868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemBehaviour
-  itemData: {fileID: 11400000, guid: d0a64630c83364041adb687e983abc3d, type: 2}
+  itemData: {fileID: 11400000, guid: f7b808cb4aae54c80a8188fb456c7beb, type: 2}
   gameManager: {fileID: 0}
 --- !u!61 &5427505791067529698
 BoxCollider2D:
