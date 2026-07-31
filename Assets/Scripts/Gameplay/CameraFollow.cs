@@ -18,8 +18,22 @@ public class CameraFollow : MonoBehaviour
     private float fixedX;
     private float fixedZ;
 
+    // Cuánto dura una sacudida al recibir daño
+    [SerializeField] private float shakeDuration = 0.25f;
+    // Desplazamiento máximo de la sacudida, en unidades del mundo
+    [SerializeField] private float shakeMagnitude = 0.35f;
+
     // Tiempo transcurrido de la animación de entrada
     private float introTimer;
+
+    // Tiempo que le queda a la sacudida actual; en cero la cámara está quieta
+    private float shakeTimer;
+
+    // Llamar desde fuera cada vez que el personaje recibe daño
+    public void Shake()
+    {
+        shakeTimer = shakeDuration;
+    }
 
     private void Awake()
     {
@@ -57,6 +71,17 @@ public class CameraFollow : MonoBehaviour
             followY = Mathf.Lerp(followY + introHeight, followY, progress);
         }
 
-        transform.position = new Vector3(fixedX, followY, fixedZ);
+        // Desplazamiento aleatorio que se suma encima del seguimiento, sin alterar su altura real
+        Vector2 shakeOffset = Vector2.zero;
+
+        if (shakeTimer > 0f)
+        {
+            shakeTimer -= Time.deltaTime;
+            // La intensidad decae con el tiempo restante para que la sacudida se apague sola
+            float intensity = shakeMagnitude * Mathf.Max(shakeTimer, 0f) / shakeDuration;
+            shakeOffset = Random.insideUnitCircle * intensity;
+        }
+
+        transform.position = new Vector3(fixedX + shakeOffset.x, followY + shakeOffset.y, fixedZ);
     }
 }

@@ -25,13 +25,18 @@ public class GameManager : MonoBehaviour
     [Header ("Animation Control")]
     [SerializeField] private Animator _animator;
     public TinteRojo _tinteRojo;
-
+    [SerializeField] private CameraFollow cameraFollow;
     void Start()
     {
         gameScore = 0f;
         painScale = 0.2f;
         characterMovement = FindAnyObjectByType<CharacterMovement>();
         AudioManager.Instance.PlayPlayerMusic();
+
+        if(cameraFollow == null)
+        {
+            cameraFollow = FindAnyObjectByType<CameraFollow>();
+        }   
     }
 
     // Update is called once per frame
@@ -91,6 +96,12 @@ public class GameManager : MonoBehaviour
                 IncreasePain(itemData.itemEffectValue);
                 AudioManager.Instance.PlaySoundEffect(ItemType.Obstacle);
                 _tinteRojo.ActivarFlash();
+
+                if(cameraFollow != null)
+                {
+                    cameraFollow.Shake();
+                }
+
                 break;
             default:
                 Debug.LogWarning("Unknown item type collected: " + itemData.itemType);
